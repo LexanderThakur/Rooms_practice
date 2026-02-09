@@ -1,0 +1,47 @@
+{% load static %}
+
+<!doctype html>
+<html>
+  <head>
+    <title>Auth Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="login">
+        <h2>Login</h2>
+        <input type="text" placeholder="email" class="l_userEmail" />
+        <input type="password" placeholder="Password" class="l_userPassword" />
+        <button onclick="login()">Login</button>
+        <button class="toggle" onclick="showRegister()">Create account</button>
+      </div>
+
+      <div id="register" class="hidden">
+        <h2>Register</h2>
+        <!-- <input type="text" placeholder="Username" /> -->
+        <input type="email" placeholder="Email" class="r_userEmail" />
+        <input type="password" placeholder="Password" class="r_userPassword" />
+        <!-- <input type="password" placeholder="Confirm Password" /> -->
+        <button onclick="register()">Register</button>
+        <button class="toggle" onclick="showLogin()">
+          Already have account?
+        </button>
+      </div>
+    </div>
+    <div class="home"></div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+    <script>
+      function showRegister() {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("register").classList.remove("hidden");
+      }
+
+      function showLogin() {
+        document.getElementById("register").classList.add("hidden");
+        document.getElementById("login").classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>
