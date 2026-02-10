@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import LoginPage from "./LoginPage";
 import Control from "./Control";
+import CreateRoom from "./CreateRoom";
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
 
@@ -15,6 +16,7 @@ function App() {
         />
       )}
       {isLoggedIn && <Control />}
+      {isLoggedIn && <CreateRoom />}
     </>
   );
 }

@@ -1,0 +1,42 @@
+.room-box {
+  background: white;
+  padding: 25px;
+  width: 320px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.c_t {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.room_name,
+.room_desc {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.room_desc {
+  resize: none;
+  height: 80px;
+}
+
+.c_b {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.c_b:hover {
+  background: #0056b3;
+}
