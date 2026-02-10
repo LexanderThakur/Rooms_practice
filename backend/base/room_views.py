@@ -45,7 +45,7 @@ def create_room(request):
 @permission_classes([AllowAny])
 def get_all_rooms(request):
 
-    rooms_qs= Rooms.objects.all()
+    rooms_qs= Room.objects.all()
     data=[]
 
     for room in rooms_qs:
