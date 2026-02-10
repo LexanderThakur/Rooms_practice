@@ -1,6 +1,7 @@
 import "./LoginPage.css";
 import { useState } from "react";
-function LoginPage() {
+const api = "http://127.0.0.1:8000";
+function LoginPage({ onLogin }) {
   const [curr, setCurr] = useState("login");
 
   async function register() {
@@ -8,7 +9,7 @@ function LoginPage() {
     const user_password = document.querySelector(".r_userPassword").value;
 
     try {
-      const response = await fetch("/register/", {
+      const response = await fetch(api + "/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +20,7 @@ function LoginPage() {
         }),
       });
 
-      data = await response.json();
+      const data = await response.json();
       if (!response.ok) {
         console.log("response not ok in register\n" + data.error);
         return;
@@ -37,7 +38,7 @@ function LoginPage() {
     const user_password = document.querySelector(".l_userPassword").value;
 
     try {
-      const response = await fetch("/login/", {
+      const response = await fetch(api + "/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +49,7 @@ function LoginPage() {
         }),
       });
 
-      data = await response.json();
+      const data = await response.json();
       if (!response.ok) {
         console.log("response not ok in login\n" + data.error);
         return;
@@ -62,7 +63,7 @@ function LoginPage() {
 
   async function me() {
     try {
-      const response = await fetch("/me/", {
+      const response = await fetch(api + "/me/", {
         method: "GET",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
@@ -72,8 +73,9 @@ function LoginPage() {
         console.log("response not ok in me");
       }
 
-      data = await response.json();
+      const data = await response.json();
       console.log(data);
+      onLogin(true);
     } catch (err) {
       alert(err);
     }
