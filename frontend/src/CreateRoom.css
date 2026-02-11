@@ -1,42 +1,53 @@
+/* Card */
 .room-box {
   background: white;
-  padding: 25px;
-  width: 320px;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  width: min(90%, 40rem);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* replaces margins */
+  justify-content: center;
+  align-items: center;
 }
 
+/* Title */
 .c_t {
   text-align: center;
-  margin-bottom: 15px;
+  font-weight: 600;
 }
 
+/* Inputs */
 .room_name,
 .room_desc {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
+  width: 90%;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
+/* Focus */
+.room_name:focus,
+.room_desc:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Textarea */
 .room_desc {
-  resize: none;
-  height: 80px;
+  resize: vertical;
+  min-height: 6rem;
 }
 
+/* Button */
 .c_b {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+  width: 40%;
   border: none;
-  background: #007bff;
+  background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
-}
-
-.c_b:hover {
-  background: #0056b3;
+  font-weight: 600;
 }

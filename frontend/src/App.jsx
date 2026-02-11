@@ -3,21 +3,17 @@ import { useState } from "react";
 import LoginPage from "./LoginPage";
 import Control from "./Control";
 import CreateRoom from "./CreateRoom";
+import JoinRoom from "./JoinRoom";
+import "./App.css";
 function App() {
-  const [isLoggedIn, setLogin] = useState(false);
-
   return (
-    <>
-      {!isLoggedIn && (
-        <LoginPage
-          onLogin={() => {
-            setLogin(true);
-          }}
-        />
-      )}
-      {isLoggedIn && <Control />}
-      {isLoggedIn && <CreateRoom />}
-    </>
+    <div className="app-layout">
+      <Control />
+
+      <div className="main-content">
+        <CreateRoom />
+      </div>
+    </div>
   );
 }
 

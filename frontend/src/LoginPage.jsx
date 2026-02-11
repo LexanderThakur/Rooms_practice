@@ -82,45 +82,47 @@ function LoginPage({ onLogin }) {
   }
 
   return (
-    <div className="container">
-      {curr === "login" && (
-        <div id="login">
-          <h2>Login</h2>
+    <div className="login-page">
+      <div className="container">
+        {curr === "login" && (
+          <div id="login">
+            <h2>Login</h2>
 
-          <input type="text" placeholder="email" className="l_userEmail" />
+            <input type="text" placeholder="email" className="l_userEmail" />
 
-          <input
-            type="password"
-            placeholder="Password"
-            className="l_userPassword"
-          />
+            <input
+              type="password"
+              placeholder="Password"
+              className="l_userPassword"
+            />
 
-          <button onClick={login}>Login</button>
+            <button onClick={login}>Login</button>
 
-          <button className="toggle" onClick={() => setCurr("register")}>
-            Create account
-          </button>
-        </div>
-      )}
-      {curr === "register" && (
-        <div id="register">
-          <h2>Register</h2>
+            <button className="toggle" onClick={() => setCurr("register")}>
+              Create account
+            </button>
+          </div>
+        )}
+        {curr === "register" && (
+          <div id="register">
+            <h2>Register</h2>
 
-          <input type="email" placeholder="Email" className="r_userEmail" />
+            <input type="email" placeholder="Email" className="r_userEmail" />
 
-          <input
-            type="password"
-            placeholder="Password"
-            className="r_userPassword"
-          />
+            <input
+              type="password"
+              placeholder="Password"
+              className="r_userPassword"
+            />
 
-          <button onClick={register}>Register</button>
+            <button onClick={register}>Register</button>
 
-          <button className="toggle" onClick={() => setCurr("login")}>
-            Already have account?
-          </button>
-        </div>
-      )}
+            <button className="toggle" onClick={() => setCurr("login")}>
+              Already have account?
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
