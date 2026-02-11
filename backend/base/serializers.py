@@ -28,6 +28,7 @@ class RoomCreateSerializer(serializers.ModelSerializer):
 
 class RoomMembershipSerializer(serializers.ModelSerializer):
     user=UserSerializer(read_only=True)
+    room=RoomSerializer(read_only=True)
     class Meta:
         model=RoomMembership
         fields="__all__"

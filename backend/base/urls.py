@@ -10,4 +10,5 @@ urlpatterns=[
     path('get/',room_views.get_all_rooms),
     path('join/<int:room_id>/',room_views.join_room),
     path('members/<int:room_id>/',room_views.get_memberships),
+    path('members/',room_views.my_memberships),
 ]

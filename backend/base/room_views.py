@@ -89,3 +89,13 @@ def get_memberships(request,room_id):
 
 
 
+@api_view(["GET"])
+@authentication_classes([customjwt])
+@permission_classes([IsAuthenticated])
+def my_memberships(request):
+
+    membership_qs= RoomMembership.objects.filter(user=request.user)
+    serializer= RoomMembershipSerializer(membership_qs,many=True)
+
+    return Response({"message":serializer.data},status=200)
+
