@@ -8,4 +8,6 @@ urlpatterns=[
     path("me/",views.me),
     path("create/",room_views.create_room),
     path('get/',room_views.get_all_rooms),
+    path('join/<int:room_id>/',room_views.join_room),
+    path('members/<int:room_id>/',room_views.get_memberships),
 ]

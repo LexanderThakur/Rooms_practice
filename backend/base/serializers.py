@@ -39,5 +39,11 @@ class RoomMembershipCreateSerializer(serializers.ModelSerializer):
         model=RoomMembership
         fields=['room']
 
-
+    def validate(self,attrs):
+        user= self.context['request'].user
+        room = attrs.get("room")
+        
+        if RoomMembership.objects.filter(user=user,room=room).exists():
+            raise serializers.ValidationError("Already Joined this Room")
            
+        return attrs

@@ -57,4 +57,35 @@ def get_all_rooms(request):
 
     
 
+@api_view(["PATCH"])
+@authentication_classes([customjwt])
+@permission_classes([IsAuthenticated])
+def join_room(request,room_id):
+
+    
+    serializer =  RoomMembershipCreateSerializer(
+        data={
+            "room":room_id
+        },
+        context={"request":request}
+    )
+    serializer.is_valid(raise_exception=True)
+    serializer.save(user=request.user)
+    return Response({"message":"joined successfully"},status=201)
+
+@api_view(["GET"])
+@authentication_classes([])
+@permission_classes([AllowAny])
+def get_memberships(request,room_id):
+
+    membership_qs= RoomMembership.objects.filter(room=room_id)
+    
+    
+    serializer= RoomMembershipSerializer(membership_qs, many=True)
+
+        
+
+    return Response({"message":serializer.data},status=200)
+
+
 
