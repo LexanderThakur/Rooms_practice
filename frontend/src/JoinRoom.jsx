@@ -24,6 +24,29 @@ function JoinRoom() {
       console.log(err);
     }
   }
+  async function join_room(room_id) {
+    let arr = [];
+    try {
+      const response = await fetch(api + "/join/" + room_id + "/", {
+        method: "PATCH",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        console.log(data);
+        return;
+      }
+      console.log(data);
+      if (response.ok) {
+        alert("Joined Successfully");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   useEffect(() => {
     my_rooms();
   }, []);
@@ -35,7 +58,9 @@ function JoinRoom() {
           <div className="room-title">{room.name}</div>
           <div className="room-desc">{room.description}</div>
           <div className="room-desc"> OWNER: {room.owner.email}</div>
-          <button className="join-btn">Join</button>
+          <button className="join-btn" onClick={() => join_room(room.id)}>
+            Join
+          </button>
         </div>
       ))}
     </div>

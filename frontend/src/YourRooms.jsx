@@ -16,14 +16,32 @@ function YourRooms() {
       //   const text = await response.text();
       //   console.log(text);
       const data = await response.json();
-      console.log(data);
+      //   console.log(data);
       setMyRooms(data.message);
+    } catch (error) {
+      alert(error);
+    }
+  }
+  async function joined_rooms() {
+    try {
+      const response = await fetch(api + "/members/", {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      //   const text = await response.text();
+      //   console.log(text);
+      const data = await response.json();
+      console.log(data);
+      //   setMyRooms(data.message);
     } catch (error) {
       alert(error);
     }
   }
   useEffect(() => {
     my_rooms();
+    joined_rooms();
   }, []);
 
   return (
