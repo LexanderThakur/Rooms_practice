@@ -56,6 +56,23 @@ function YourRooms() {
       alert(error);
     }
   }
+  async function leave_room(room_id) {
+    try {
+      const response = await fetch(api + "/leave/" + room_id + "/", {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+      joined_rooms();
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   useEffect(() => {
     my_rooms();
     joined_rooms();
@@ -83,7 +100,14 @@ function YourRooms() {
             <div className="room-title">{room.name}</div>
             <div className="room-desc">{room.description}</div>
 
-            {/* <button className="join-btn">Join</button> */}
+            <button
+              className="leave-btn"
+              onClick={() => {
+                leave_room(room.id);
+              }}
+            >
+              Leave Room
+            </button>
           </div>
         ))}
       </div>

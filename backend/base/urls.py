@@ -14,4 +14,5 @@ urlpatterns=[
     path('members/<int:room_id>/',room_views.get_memberships),
     path('members/',room_views.my_memberships),
     path('delete/<int:room_id>/',room_views.delete_room),
+    path('leave/<int:room_id>/',room_views.leave_room),
 ]

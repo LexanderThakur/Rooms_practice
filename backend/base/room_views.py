@@ -125,3 +125,16 @@ def delete_room(request,room_id):
 
     room.delete()
     return Response({"message":"success"},status=200)
+
+
+@api_view(['DELETE'])
+@authentication_classes([customjwt])
+@permission_classes([IsAuthenticated])
+def leave_room(request,room_id):
+
+    qs= RoomMembership.objects.filter(user=request.user,room=room_id)
+
+    for q in qs:
+        q.delete()
+
+    return Response({"message":"success"},status=200)

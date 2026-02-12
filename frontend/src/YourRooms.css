@@ -47,3 +47,14 @@
   font-weight: 500;
   cursor: pointer;
 }
+
+.leave-btn {
+  width: 100%;
+  padding: 10px;
+  border: solid red;
+  border-radius: 8px;
+  background: white;
+  color: #eb5025;
+  font-weight: 500;
+  cursor: pointer;
+}
