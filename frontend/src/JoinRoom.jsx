@@ -6,7 +6,7 @@ function JoinRoom() {
   async function my_rooms() {
     let arr = [];
     try {
-      const response = await fetch(api + "/members/", {
+      const response = await fetch(api + "/get/", {
         method: "GET",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
@@ -19,7 +19,7 @@ function JoinRoom() {
         return;
       }
       console.log(data);
-      setRooms(data.message.map((m) => m.room));
+      setRooms(data.message);
     } catch (err) {
       console.log(err);
     }
@@ -34,6 +34,7 @@ function JoinRoom() {
         <div className="room-card" key={room.id}>
           <div className="room-title">{room.name}</div>
           <div className="room-desc">{room.description}</div>
+          <div className="room-desc"> OWNER: {room.owner.email}</div>
           <button className="join-btn">Join</button>
         </div>
       ))}

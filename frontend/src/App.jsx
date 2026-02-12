@@ -5,7 +5,7 @@ import Control from "./Control";
 import CreateRoom from "./CreateRoom";
 import JoinRoom from "./JoinRoom";
 import "./App.css";
-
+import YourRooms from "./YourRooms";
 function App() {
   const [page, setPage] = useState("Create Room");
   const [onLogin, setLogin] = useState(false);
@@ -21,6 +21,7 @@ function App() {
           <div className="main-content">
             {page === "Create Room" && <CreateRoom />}
             {page === "Join Room" && <JoinRoom />}
+            {page === "Your Rooms" && <YourRooms />}
           </div>
         </div>
       )}

@@ -49,13 +49,19 @@ def get_all_rooms(request):
     data=[]
 
     for room in rooms_qs:
+        
         serializer=RoomSerializer(room)
         data.append(serializer.data)
 
     return Response({"message":data},status=200)
 
-
-    
+@api_view(['GET'])
+@authentication_classes([customjwt])
+@permission_classes([IsAuthenticated])
+def get_rooms(request):
+    room_qs= Room.objects.exclude(owner=request.user)
+    serializer= RoomSerializer(room_qs,many=True)
+    return Response({"message":serializer.data},status=200)
 
 @api_view(["PATCH"])
 @authentication_classes([customjwt])
@@ -99,3 +105,10 @@ def my_memberships(request):
 
     return Response({"message":serializer.data},status=200)
 
+@api_view(["GET"])
+@authentication_classes([customjwt])
+@permission_classes([IsAuthenticated])
+def get_my_rooms(request):
+    qs= Room.objects.filter(owner=request.user)
+    serializer= RoomSerializer(qs,many=True)
+    return Response({"message":serializer.data},status=200)
