@@ -34,7 +34,7 @@ function YourRooms() {
       //   console.log(text);
       const data = await response.json();
       console.log(data);
-      //   setMyRooms(data.message);
+      setJoinedRooms(data.message.map((m) => m.room));
     } catch (error) {
       alert(error);
     }
@@ -58,7 +58,16 @@ function YourRooms() {
         ))}
       </div>
       <h1>Joined Rooms</h1>
-      <div className="joined-rooms"></div>
+      <div className="joined-rooms">
+        {joinedRooms.map((room) => (
+          <div className="room-card" key={room.id}>
+            <div className="room-title">{room.name}</div>
+            <div className="room-desc">{room.description}</div>
+
+            {/* <button className="join-btn">Join</button> */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
