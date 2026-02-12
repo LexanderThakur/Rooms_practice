@@ -1,7 +1,7 @@
 import "./LoginPage.css";
 import { useState } from "react";
 const api = "http://127.0.0.1:8000";
-function LoginPage({ onLogin }) {
+function LoginPage({ setLogin }) {
   const [curr, setCurr] = useState("login");
 
   async function register() {
@@ -75,7 +75,7 @@ function LoginPage({ onLogin }) {
 
       const data = await response.json();
       console.log(data);
-      onLogin(true);
+      setLogin(true);
     } catch (err) {
       alert(err);
     }
