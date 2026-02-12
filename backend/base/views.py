@@ -70,3 +70,4 @@ def me(request):
             "username": request.user.username,
             "email": request.user.email,
         })
+

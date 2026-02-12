@@ -36,3 +36,14 @@
   color: #555;
   margin-bottom: 16px;
 }
+
+.delete-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #eb2525;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}

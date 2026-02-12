@@ -39,6 +39,23 @@ function YourRooms() {
       alert(error);
     }
   }
+  async function delete_room(room_id) {
+    try {
+      const response = await fetch(api + "/delete/" + room_id + "/", {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      //   const text = await response.text();
+      //   console.log(text);
+      const data = await response.json();
+      console.log(data);
+      my_rooms();
+    } catch (error) {
+      alert(error);
+    }
+  }
   useEffect(() => {
     my_rooms();
     joined_rooms();
@@ -53,7 +70,9 @@ function YourRooms() {
             <div className="room-title">{room.name}</div>
             <div className="room-desc">{room.description}</div>
 
-            {/* <button className="join-btn">Join</button> */}
+            <button className="delete-btn" onClick={() => delete_room(room.id)}>
+              Delete Room
+            </button>
           </div>
         ))}
       </div>

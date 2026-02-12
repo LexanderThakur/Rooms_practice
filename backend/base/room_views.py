@@ -112,3 +112,16 @@ def get_my_rooms(request):
     qs= Room.objects.filter(owner=request.user)
     serializer= RoomSerializer(qs,many=True)
     return Response({"message":serializer.data},status=200)
+
+
+@api_view(['DELETE'])
+@authentication_classes([customjwt])
+@permission_classes([IsAuthenticated])
+def delete_room(request,room_id):
+
+    room = Room.objects.get(id=room_id)
+    if not room:
+        return Response({"message":"already gone"},status=200)
+
+    room.delete()
+    return Response({"message":"success"},status=200)

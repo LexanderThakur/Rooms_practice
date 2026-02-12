@@ -37,6 +37,7 @@ function JoinRoom() {
       const data = await response.json();
       if (!response.ok) {
         console.log(data);
+        alert(data.non_field_errors);
         return;
       }
       console.log(data);
